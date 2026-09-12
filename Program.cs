@@ -1,49 +1,45 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.IO.IsolatedStorage;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-class HinhTamGiac
+namespace ConsoleApp1
 {
-    // Thuộc tính
-    private int chieuCao;
-
-    // Constructor
-    public HinhTamGiac(int chieuCao)
+    internal class Program
     {
-        this.chieuCao = chieuCao;
-    }
-
-    // Phương thức vẽ tam giác
-    public void VeTamGiac()
-    {
-        for (int i = 1; i <= chieuCao; i++)
+        static void Main(string[] args)
         {
-            // In khoảng trắng
-            for (int j = 1; j <= chieuCao - i; j++)
-            {
-                Console.Write(" ");
-            }
+            Console.WriteLine("Enter number:");
 
-            // In dấu *
-            for (int j = 1; j <= 2 * i - 1; j++)
-            {
-                Console.Write("*");
-            }
 
-            Console.WriteLine();
+            // Khai báo mảng double có 3 phần tử
+            double[] numbers = new double[3];
+            
+            for (int i = 0; i < 3; i++)
+            {
+                while(true)
+                    {
+
+                    Console.WriteLine("Nhap so thu " + (i + 1));
+                    string input = Console.ReadLine();
+
+                    if (double.TryParse(input, out numbers[i]))
+                        {
+                        break;
+                        }
+
+                    Console.WriteLine("Khong phai so, vui long nhap lai.");
+                    }    
+            }
+            Console.WriteLine("So ban da nhap la ");
+            for (int i = 0; i < 3; i++)
+            {
+                Console.WriteLine("So thu " + (i+1) + " ban da nhap la " + numbers[i]);
+            }
         }
     }
 }
 
-class Program
-{
-    static void Main()
-    {
-        Console.Write("Nhập chiều cao tam giác: ");
-        int h = int.Parse(Console.ReadLine());
 
-        // Khai báo và tạo đối tượng hình tam giác
-        HinhTamGiac tamGiac = new HinhTamGiac(h);
-
-        // Gọi phương thức vẽ
-        tamGiac.VeTamGiac();
-    }
-}
